@@ -21,3 +21,10 @@ Warning: The included package control does use the default package managers.
 
 Run the script. All output is shown on the console. 
 Give the script input where needed.
+
+## Screenshots
+![image](https://user-images.githubusercontent.com/73343961/120105871-07160380-c15b-11eb-88ae-260c270f5d2c.png)
+![image](https://user-images.githubusercontent.com/73343961/120105892-1301c580-c15b-11eb-9357-8bd2bd0f9752.png)
+![image](https://user-images.githubusercontent.com/73343961/120105914-20b74b00-c15b-11eb-99da-879783c43b90.png)
+
+
