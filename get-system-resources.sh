@@ -867,4 +867,4 @@ while true; do
 }
 
 #Start the main menu
-tui
+check_tui_availability
