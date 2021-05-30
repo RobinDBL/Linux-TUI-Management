@@ -11,8 +11,6 @@ This script works for RPM and DEB systems. (Tested on CentOS & Fedora & Ubuntu)
   If you want this script to be accessible by only your user, copy it to the <code>~/bin</code> folder.
 
   <li>If you want to run the script without <code>*.sh</code> extension or without the <code>./</code> or <code>bash</code> commands, move it to one of the above folders and remove the <code>.sh</code> from the filename.
-<li>
-
 <li>Make sure the script is executable by <code>chmod +x {scriptname}</code></li>
 </ol>
 
