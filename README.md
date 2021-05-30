@@ -17,10 +17,45 @@ This script works for RPM and DEB systems. (Tested on CentOS & Fedora & Ubuntu)
 Note: If the script requires packages, it will install them using the included package control.
 Warning: The included package control does use the default package managers.
 
-## Utilisation
+## Usage
 
 Run the script. All output is shown on the console (if possible tui). 
 Give the script input where needed.
+
+## Functions
+<ul>
+<li>Check the cpu-, ram-, disk-usage and network info all with one command</li>
+<li>List only the network info</li>
+<li>List only the disk usage</li>
+<li>List only the ram usage</li> 
+<li>List only the CPU usage</li>
+<li>List the Kernel version</li>
+<li>Execute a script by giving a path to the script</li>
+<li>Service management
+<ul>
+<li>Check the status of a service</li>
+<li>Start a service</li>
+<li>Stop a service</li>
+<li>Restart a service</li>
+<li>Enable a service</li>
+<li>disable a service</li>
+</ul>
+</li>
+<li> Manage packages
+<ul>
+<li>Install a package</li>
+<li>Remove a package</li>
+<li>Search a package in the repository list</li>
+<li>Update the repository list</li>
+<li>Update all packages</li>
+</ul>
+</li>
+
+<li>Ping a system</li>
+<li>Check the uptime</li>
+<li>Check logged in users</li>
+
+</ul>
 
 ## Requirements
 For the Tui is the package <code>dialog</code> required. The system will try to install it automatically. If it does not find it, it will use the integrated submenu's.
