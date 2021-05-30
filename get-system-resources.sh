@@ -5,7 +5,7 @@
 #Script to check system resources
 #works on both RPM based systems as on DEB based systems
 
-######################################################################################
+#######################################################################################
 #General functions for output
 
 function header(){
