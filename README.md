@@ -19,12 +19,25 @@ Warning: The included package control does use the default package managers.
 
 ## Utilisation
 
-Run the script. All output is shown on the console. 
+Run the script. All output is shown on the console (if possible tui). 
 Give the script input where needed.
 
+## Requirements
+For the Tui is the package <code>dialog</code> required. The system will try to install it automatically. If it does not find it, it will use the integrated submenu's.
+
 ## Screenshots
-![image](https://user-images.githubusercontent.com/73343961/120105871-07160380-c15b-11eb-88ae-260c270f5d2c.png)
-![image](https://user-images.githubusercontent.com/73343961/120105892-1301c580-c15b-11eb-9357-8bd2bd0f9752.png)
-![image](https://user-images.githubusercontent.com/73343961/120105914-20b74b00-c15b-11eb-99da-879783c43b90.png)
+example: first item:
+![image](https://user-images.githubusercontent.com/73343961/120112174-09855700-c175-11eb-92ee-983fdb13529c.png)
+action:
+![image](https://user-images.githubusercontent.com/73343961/120112189-1a35cd00-c175-11eb-9c23-186112ff89b3.png)
+
+sometimes submenu: action 7:
+![image](https://user-images.githubusercontent.com/73343961/120112200-29b51600-c175-11eb-94af-26f181026806.png)
+![image](https://user-images.githubusercontent.com/73343961/120112209-30438d80-c175-11eb-81dd-687ba150dea1.png)
+
+
+
+
+
 
 
