@@ -3,7 +3,7 @@ A script to automate and simplify simple system tasks, such as service control, 
 pinging etc.
 This script works for RPM and DEB systems. (Tested on CentOS & Fedora & Ubuntu)
 
-##Installation
+## Installation
 <ol>
 <li>Download this repository to your system.</li>
 <li>Copy this script to the /bin or the ~/bin folder.</li>
@@ -19,7 +19,7 @@ If you want this script to be accessible by only your user, copy it to the ~/bin
 
 Note: If the script requires packages, it will install them using the included package control.
 
-##Utilisation
+## Utilisation
 
 Run the script. All output is shown on the console. 
 Give the script input where needed.
