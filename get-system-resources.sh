@@ -1,9 +1,10 @@
 #!/bin/bash
 ###################
 #Author: Robin Deblauwe
-#Repository: github.com/RobinDBL/
+#Repository: github.com/RobinDBL/Linux-System-Resources
 #Script to check system resources
 #works on both RPM based systems as on DEB based systems
+#For questions or issues, go to the issues page on my github.
 
 ######################################################################################
 #General functions for output
@@ -161,6 +162,42 @@ function update_packages(){
 		#RPM based systems
 		then
 		  sudo yum update
+	else
+		  echo "Don't know this package system (neither RPM nor DEB)."
+		  exit 1
+	fi
+}
+
+#Update only one package
+function update_one_package(){
+	echo "trying to update package $1"
+	if dpkg -S /bin/ls >/dev/null 2>&1
+		#Debian based systems
+		then
+		  update_repository
+		  sudo apt-get --only-upgrade install $1
+	elif rpm -q -f /bin/ls >/dev/null 2>&1
+		#RPM based systems
+		then
+		  sudo yum update $1
+	else
+		  echo "Don't know this package system (neither RPM nor DEB)."
+		  exit 1
+	fi
+}
+
+#list all updates
+function list_all_updates(){
+	echo "Listing all updates..."
+	if dpkg -S /bin/ls >/dev/null 2>&1
+		#Debian based systems
+		then
+		  update_repository
+		  sudo apt list --upgradable
+	elif rpm -q -f /bin/ls >/dev/null 2>&1
+		#RPM based systems
+		then
+		  sudo yum check-update
 	else
 		  echo "Don't know this package system (neither RPM nor DEB)."
 		  exit 1
@@ -517,6 +554,7 @@ function script_logic(){
 #the look is the only difference (and the code needed to achieve this.)
 
 function services_tui(){
+
 DIALOG_CANCEL=1
 DIALOG_ESC=255
 HEIGHT=0
@@ -530,13 +568,15 @@ while true; do
     --title "Menu" \
     --clear \
     --cancel-label "Exit" \
-    --menu "Please select:" $HEIGHT $WIDTH 6 \
+    --menu "Please select:" $HEIGHT $WIDTH 8 \
 		"1" "see the status of a service"\
 		"2" "Stop a service"\
 		"3" "Start a service"\
 		"4" "Restart a service"\
 		"5" "Enable the starting of a service on boot"\
 		"6" "Disable the starting of a service on boot"\
+		"7" "List all services"\
+		"8" "List all running services"\
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -608,12 +648,28 @@ while true; do
 				echo "$service was succesfully disabled: "
 				continue
 			;;
+
+			#List all services
+			7)
+				clear
+				echo "Listing all services, press 'q' to quit..."
+				continue
+				systemctl list-units --type=service
+			;;
+
+			#List all running services
+			8)
+				clear
+				continue
+				systemctl list-units --type=service --state=running
+			;;
 		esac
 	done
 }
 
 function packages_tui(){
-	DIALOG_CANCEL=1
+
+DIALOG_CANCEL=1
 DIALOG_ESC=255
 HEIGHT=0
 WIDTH=0
@@ -626,12 +682,14 @@ while true; do
     --title "Menu" \
     --clear \
     --cancel-label "Exit" \
-    --menu "Please select:" $HEIGHT $WIDTH 5 \
+    --menu "Please select:" $HEIGHT $WIDTH 7 \
 		"1" "Install a package"\
 		"2" "Remove a package"\
 		"3" "search a package in the repository list"\
 		"4" "Update the repository list"\
 		"5" "Update ALL packages"\
+		"6" "Update one package"\
+		"7" "list all available updates"\
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -684,8 +742,24 @@ while true; do
 			#Update all packages
 			5)
 				clear
-				echo "Updateing all packages"
+				echo "Updating all packages"
 				update_packages
+				continue
+			;;
+
+			#Update 1 package
+			6)
+				clear
+				read -p "Enter the correct name of the package to be updated: " package 
+				echo "updating package $package..."
+				update_one_package $package
+				continue
+			;;
+
+			#List all updates
+			7)
+				clear
+				list_all_updates
 				continue
 			;;
 		esac
@@ -752,7 +826,7 @@ while true; do
 			"5" "kernel version"\
 			"6" "execute a script"\
 			"7" "start / stop / restart / enable / disable services"\
-			"8" "Install / remove / update a package"\
+			"8" "Install / remove / update packages"\
 			"9" "ping a system"\
 			"10" "uptime"\
 			"11" "Check logged in users"\
