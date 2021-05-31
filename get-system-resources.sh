@@ -194,7 +194,7 @@ function get_sensor_reading(){
 			else
 				#If packe is not installed
 				#install package
-	  			echo "package lm_sensors is not installed, installing now"
+	  			echo "Installing now"
 	  			install_package lm_sensors
 			fi
 	else
@@ -704,7 +704,7 @@ if dpkg -S /bin/ls >/dev/null 2>&1
 	  		else
 	  			#if package is not installed
 	  			#install package
-	  			echo "package lm-sensors is not installed, installing now"
+	  			echo "package dialog is not installed, installing now"
 	  			install_package dialog
 			fi
 	elif rpm -q -f /bin/ls >/dev/null 2>&1
@@ -717,7 +717,7 @@ if dpkg -S /bin/ls >/dev/null 2>&1
 			else
 				#If packe is not installed
 				#install package
-	  			echo "package lm_sensors is not installed, installing now"
+	  			echo "Installing now"
 	  			install_package dialog
 			fi
 	else
