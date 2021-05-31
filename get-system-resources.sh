@@ -942,14 +942,14 @@ while true; do
 				clear
 				echo "Rebooting the system in 15 seconds... press <CTRL+C> to cancel..."
 				sleep 15
-				sudo systemctl reboot
+				systemctl reboot
 			;;
 
 			13)
 				clear
 				echo "Shutting down the system in 15 seconds... press <CTRL+C> to cancel..."
 				sleep 15
-				sudo systemctl poweroff
+				systemctl poweroff
 			;;
 		esac
 	done
