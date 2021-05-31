@@ -1,10 +1,9 @@
 #!/bin/bash
 ###################
 #Author: Robin Deblauwe
-#Repository: github.com/RobinDBL/Linux-System-Resources
+#Repository: github.com/RobinDBL/
 #Script to check system resources
 #works on both RPM based systems as on DEB based systems
-#For questions or issues, go to the issues page on my github.
 
 ######################################################################################
 #General functions for output
@@ -817,7 +816,7 @@ while true; do
     --title "Menu" \
     --clear \
     --cancel-label "Exit" \
-    --menu "Please select:" $HEIGHT $WIDTH 12 \
+    --menu "Please select:" $HEIGHT $WIDTH 14 \
 			"A" "Cpu usage, RAM usage, Disk usage and Network Info"\
 			"1" "Netwerk info"\
 			"2" "Disk usage"\
@@ -830,6 +829,8 @@ while true; do
 			"9" "ping a system"\
 			"10" "uptime"\
 			"11" "Check logged in users"\
+			"12" "Reboot"\
+			"13" "Shut down the system"\
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -934,6 +935,21 @@ while true; do
 				clear
 				users
 				continue
+			;;
+
+			#Reboot the system
+			12)
+				clear
+				echo "Rebooting the system in 15 seconds... press <CTRL+C> to cancel..."
+				sleep 15
+				sudo systemctl reboot
+			;;
+
+			13)
+				clear
+				echo "Shutting down the system in 15 seconds... press <CTRL+C> to cancel..."
+				sleep 15
+				sudo systemctl poweroff
 			;;
 		esac
 	done
