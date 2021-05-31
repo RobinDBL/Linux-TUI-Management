@@ -24,37 +24,41 @@ Give the script input where needed.
 
 ## Functions
 <ul>
-<li>Check the cpu-, ram-, disk-usage and network info all with one command</li>
-<li>List only the network info</li>
-<li>List only the disk usage</li>
-<li>List only the ram usage</li> 
-<li>List only the CPU usage</li>
-<li>List the Kernel version</li>
-<li>Execute a script by giving a path to the script</li>
-<li>Service management
-<ul>
-<li>Check the status of a service</li>
-<li>Start a service</li>
-<li>Stop a service</li>
-<li>Restart a service</li>
-<li>Enable a service</li>
-<li>disable a service</li>
-</ul>
-</li>
-<li> Manage packages
-<ul>
-<li>Install a package</li>
-<li>Remove a package</li>
-<li>Search a package in the repository list</li>
-<li>Update the repository list</li>
-<li>Update all packages</li>
-</ul>
-</li>
-
-<li>Ping a system</li>
-<li>Check the uptime</li>
-<li>Check logged in users</li>
-
+  <li>Check the cpu-, ram-, disk-usage and network info all with one command</li>
+  <li>List only the network info</li>
+  <li>List only the disk usage</li>
+  <li>List only the ram usage</li> 
+  <li>List only the CPU usage</li>
+  <li>List the Kernel version</li>
+  <li>Execute a script by giving a path to the script</li>
+  <li>Service management
+    <ul>
+      <li>Check the status of a service</li>
+      <li>Start a service</li>
+      <li>Stop a service</li>
+      <li>Restart a service</li>
+      <li>Enable a service</li>
+      <li>Disable a service</li>
+      <li>List all available services</li>
+      <li>List all running services</li>
+    </ul>
+  </li>
+  <li> Manage packages
+    <ul>
+      <li>Install a package</li>
+      <li>Remove a package</li>
+      <li>Search a package in the repository list</li>
+      <li>Update the repository list</li>
+      <li>Update all packages</li>
+      <li>Update one package</li>
+      <li>List all packages that have updates</li>
+    </ul>
+  </li>
+  <li>Ping a system</li>
+  <li>Check the uptime</li>
+  <li>Check logged in users</li>
+  <li>Reboot the system</li>
+  <li>Shut down the system</li>
 </ul>
 
 ## Requirements
