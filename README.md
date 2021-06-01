@@ -63,6 +63,9 @@ Give the script input where needed.
 
 ## Requirements
 For the Tui is the package <code>dialog</code> required. The system will try to install it automatically. If it does not find it, it will use the integrated submenu's.
+The cpu utilization gives the temperature of the individual cores. This requires the package <code>lm-sensors</code> (ubuntu) or <code>lm_sensors</code> (RPM). The system will automatically try to install these required packages.
+
+If the required packages are not found, the system will continue to work, but it will keep trying to install the required packages. If possible, then try to install the packages manually.
 
 ## Screenshots
 example: first item:
@@ -80,7 +83,10 @@ sometimes submenu: action 7:
 ![image](https://user-images.githubusercontent.com/73343961/120290609-cb964900-c2c2-11eb-9419-c47a808fd7a5.png)
 
 
+## Known bugs
+If you use putty as an ssh client to connect to your linux system, putty is known for bad TUI integration.
 
+Change the character set ("Window -> translation") in putty from "UTF-8" to "ISO-8859-1: 1998 (Latin-1, West Europe)".
 
 
 
