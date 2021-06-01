@@ -71,7 +71,7 @@ example: first item:
 
 action:
 
-![image](https://user-images.githubusercontent.com/73343961/120112189-1a35cd00-c175-11eb-9c23-186112ff89b3.png)
+![image](https://user-images.githubusercontent.com/73343961/120291003-2891ff00-c2c3-11eb-8bf8-0ee41825c5e8.png)
 
 sometimes submenu: action 7:
 
