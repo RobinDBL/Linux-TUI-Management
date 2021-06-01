@@ -1,4 +1,4 @@
-# Linux-System-Resources
+# Linux-TUI-Management
 A script to automate and simplify simple system tasks, such as service control, package control, system monitoring,
 pinging etc.
 This script works for RPM and DEB systems. (Tested on CentOS & Fedora & Ubuntu)
@@ -67,7 +67,7 @@ For the Tui is the package <code>dialog</code> required. The system will try to 
 ## Screenshots
 example: first item:
 
-![image](https://user-images.githubusercontent.com/73343961/120112174-09855700-c175-11eb-92ee-983fdb13529c.png)
+![image](https://user-images.githubusercontent.com/73343961/120290569-bfaa8700-c2c2-11eb-8953-d4b9679826fe.png)
 
 action:
 
@@ -75,9 +75,9 @@ action:
 
 sometimes submenu: action 7:
 
-![image](https://user-images.githubusercontent.com/73343961/120112200-29b51600-c175-11eb-94af-26f181026806.png)
+![image](https://user-images.githubusercontent.com/73343961/120290645-d650de00-c2c2-11eb-82af-a6fe935e611e.png)
 
-![image](https://user-images.githubusercontent.com/73343961/120112209-30438d80-c175-11eb-81dd-687ba150dea1.png)
+![image](https://user-images.githubusercontent.com/73343961/120290609-cb964900-c2c2-11eb-9419-c47a808fd7a5.png)
 
 
 
