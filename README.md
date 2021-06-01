@@ -86,7 +86,7 @@ sometimes submenu: action 7:
 ## Known bugs
 If you use putty as an ssh client to connect to your linux system, putty is known for bad TUI integration.
 
-Change the character set ("Window -> translation") in putty from "UTF-8" to "ISO-8859-1: 1998 (Latin-1, West Europe)".
+To fix this, change the character set ("Window -> translation") in putty from "UTF-8" to "ISO-8859-1: 1998 (Latin-1, West Europe)".
 
 
 
