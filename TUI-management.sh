@@ -846,11 +846,12 @@ if dpkg -S /bin/ls >/dev/null 2>&1
 	  			#install package
 	  			echo "package dialog is not installed, installing now"
 	  			install_package dialog
+				script_logic
 			fi
 	elif rpm -q -f /bin/ls >/dev/null 2>&1
 		#RPM based systems
 		then
-		  if rpm -q dialog #note, rpm packe is lm_sensors, not with a '-'
+		  if rpm -q dialog 
 		  	#If package is installed
 			then
 			    tui
@@ -859,6 +860,7 @@ if dpkg -S /bin/ls >/dev/null 2>&1
 				#install package
 	  			echo "Installing now"
 	  			install_package dialog
+				script_logic
 			fi
 	else
 		  echo "Don't know this package system (neither RPM nor DEB)."
