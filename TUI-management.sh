@@ -244,6 +244,73 @@ function ping_system(){
 	ping $1 -c 4
 }
 
+function file_browser(){
+	if dpkg -S /bin/ls >/dev/null 2>&1
+		#Debian based systems
+		then
+		  if dpkg-query -W -f='${Status} ${Version}\n' mc >/dev/null 2>&1
+		  	#If package is installed
+		  then
+		  	mc #execute the file manager
+	  		else
+	  			#if package is not installed
+	  			#install package
+	  			echo "package midnight commander (mc) is not installed, installing now"
+	  			install_package mc
+			fi
+	elif rpm -q -f /bin/ls >/dev/null 2>&1
+		#RPM based systems
+		then
+		  if rpm -q mc
+		  	#If package is installed
+			then
+			    mc #execute the file manager
+			else
+				#If packe is not installed
+				#install package
+	  			echo "Installing now"
+	  			install_package mc
+			fi
+	else
+		  echo "Don't know this package system (neither RPM nor DEB)."
+		  exit 1
+	fi
+}
+
+
+function network_settings(){
+	if dpkg -S /bin/ls >/dev/null 2>&1
+		#Debian based systems
+		then
+		  if dpkg-query -W -f='${Status} ${Version}\n' network-manager >/dev/null 2>&1
+		  	#If package is installed
+		  then
+		  	nmtui #execute the file manager
+	  		else
+	  			#if package is not installed
+	  			#install package
+	  			echo "package network-manager is not installed, installing now"
+	  			install_package network-manager
+			fi
+	elif rpm -q -f /bin/ls >/dev/null 2>&1
+		#RPM based systems
+		then
+		  if rpm -q NetworkManager-tui
+		  	#If package is installed
+			then
+			    nmtui #execute the file manager
+			else
+				#If packe is not installed
+				#install package
+	  			echo "Installing now"
+	  			install_package NetworkManager-tui
+			fi
+	else
+		  echo "Don't know this package system (neither RPM nor DEB)."
+		  exit 1
+	fi
+}
+
 ##################################################################################################
 #The menus
 #I left the menus here in case it is needed. Now the menus should be replaced with tui's
@@ -816,21 +883,23 @@ while true; do
     --title "Menu" \
     --clear \
     --cancel-label "Exit" \
-    --menu "Please select:" $HEIGHT $WIDTH 14 \
+    --menu "Please select:" $HEIGHT $WIDTH 16 \
 			"A" "Cpu usage, RAM usage, Disk usage and Network Info"\
 			"1" "Netwerk info"\
 			"2" "Disk usage"\
 			"3" "RAM usage"\
 			"4" "CPU usage"\
-			"5" "kernel version"\
-			"6" "execute a script"\
-			"7" "start / stop / restart / enable / disable services"\
-			"8" "Install / remove / update packages"\
-			"9" "ping a system"\
-			"10" "uptime"\
-			"11" "Check logged in users"\
-			"12" "Reboot"\
-			"13" "Shut down the system"\
+			"5" "File browser"\
+			"6" "Kernel version"\
+			"7" "Execute a script"\
+			"8" "Start / stop / restart / enable / disable services"\
+			"9" "Install / remove / update packages"\
+			"10" "Ping a system"\
+			"11" "Uptime"\
+			"12" "Check logged in users"\
+			"13" "Network settings"\
+			"14" "Reboot"\
+			"15" "Shut down the system"\
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -888,34 +957,40 @@ while true; do
 				continue
 			;;
 
-			#Kernel version
+			#File browser
 			5)
+				clear
+				file_browser
+			;;
+
+			#Kernel version
+			6)
 				clear
 				get_kernel_version
 				continue
 			;;
 
 			#execute script
-			6)
+			7)
 				clear
 				execute_script
 				continue
 			;;
 
 			#go to services submenu
-			7)
+			8)
 				clear
 				services_tui
 			;;
 
 			#go to packages submenu
-			8)
+			9)
 				clear
 				packages_tui
 			;;
 
 			#ping a system
-			9)
+			10)
 				clear
 				#Ask for the ip
 				read -p "Enter the ip of the system to ping: [x.x.x.x] " ip
@@ -924,28 +999,34 @@ while true; do
 			;;
 
 			#check uptime
-			10)
+			11)
 				clear
 				uptime
 				continue
 			;;
 
 			#Check logged in users
-			11)
+			12)
 				clear
 				users
 				continue
 			;;
 
+			#Network settings
+			13)
+				clear
+				network_settings
+			;;
+
 			#Reboot the system
-			12)
+			14)
 				clear
 				echo "Rebooting the system in 15 seconds... press <CTRL+C> to cancel..."
 				sleep 15
 				systemctl reboot
 			;;
 
-			13)
+			15)
 				clear
 				echo "Shutting down the system in 15 seconds... press <CTRL+C> to cancel..."
 				sleep 15
