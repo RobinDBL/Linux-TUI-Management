@@ -65,7 +65,7 @@ function get_network_info(){
 function get_disk_usage(){
 	echo ""
 	echo "Disk usage: "
-	df -h /dev/sd* #Filter out most non /dev/sd*
+	df -h
 	echo ""
 }
 
@@ -82,7 +82,7 @@ function execute_script(){
 function get_cpu_usage(){
 	echo ""
 	echo "CPU"
-	cat /proc/cpuinfo | grep 'model name'
+	cat /proc/cpuinfo | grep 'model name' | head -n 1
 	echo "CPU usage in %: "
 	top -b -n1 -p 1 | grep 'Cpu' | cut -f 6 -d ' '
 	echo ""
@@ -644,10 +644,10 @@ WIDTH=0
 while true; do
   exec 3>&1
   input=$(dialog \
-    --backtitle "System Information" \
-    --title "Menu" \
+    --backtitle "Linux-Tui-Management" \
+    --title "Service management" \
     --clear \
-    --cancel-label "Exit" \
+    --cancel-label "Back" \
     --menu "Please select:" $HEIGHT $WIDTH 8 \
 		"1" "see the status of a service"\
 		"2" "Stop a service"\
@@ -759,10 +759,10 @@ WIDTH=0
 while true; do
   exec 3>&1
   input=$(dialog \
-    --backtitle "System Information" \
-    --title "Menu" \
+    --backtitle "Linux-Tui-Management" \
+    --title "Package manager" \
     --clear \
-    --cancel-label "Exit" \
+    --cancel-label "Back" \
     --menu "Please select:" $HEIGHT $WIDTH 7 \
 		"1" "Install a package"\
 		"2" "Remove a package"\
@@ -899,7 +899,7 @@ WIDTH=0
 while true; do
   exec 3>&1
   input=$(dialog \
-    --backtitle "System Information" \
+    --backtitle "Linux-Tui-Management" \
     --title "Menu" \
     --clear \
     --cancel-label "Exit" \
