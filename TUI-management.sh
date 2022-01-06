@@ -1,7 +1,7 @@
 #!/bin/bash
 ###################
 #Author: Robin Deblauwe
-#Repository: github.com/RobinDBL/
+#Repository: gitlab.blueservices.be/RobinDBL/Linux-TUI-Management
 #Script to check system resources
 #works on both RPM based systems as on DEB based systems
 
@@ -46,7 +46,18 @@ function get_ram_usage(){
 function get_network_info(){
 	echo ""
 	echo "Network info: "
-	ip addr show | grep 'inet ' | grep -v ' lo' #Get ip address, filter out junk & remove loopback adapter
+	#Get ip address, filter out junk & remove loopback adapter
+
+	AMOUNT=$(ip addr show | grep 'inet ' | grep -v ' lo' | wc -l)
+	for ((i=1;i<=$AMOUNT;i++))
+	do
+		IPLIST_RAW="$(ip addr show | grep 'inet ' | grep -v ' lo' | head -n $i | tail -1)"
+		IPLIST="IP-address: \t $(echo $IPLIST_RAW | cut -f 2 -d ' ')"
+		SUBNET="\t \t subnet: $(echo $IPLIST_RAW | cut -f 4 -d ' ')"
+		INTERFACE="\t \t Interface: $(echo $IPLIST_RAW | cut -f 7- -d ' ')"
+		OUTPUT="$IPLIST   $SUBNET   $INTERFACE"
+		echo -e $OUTPUT
+	done
 	echo ""
 }
 
@@ -726,6 +737,7 @@ while true; do
 			#List all running services
 			8)
 				clear
+				echo "Listing all services, press 'q' to quit..."
 				continue
 				systemctl list-units --type=service --state=running
 			;;
@@ -834,10 +846,13 @@ while true; do
 
 function check_tui_availability(){
 #Check if the TUI (package name 'Dialog') is installed
+
+#Check if debian based
 if dpkg -S /bin/ls >/dev/null 2>&1
 		#Debian based systems
 		then
-		  if dpkg-query -W -f='${Status} ${Version}\n' dialog >/dev/null 2>&1
+		  pkg="dialog"
+		  if dpkg --get-selections | grep -q "^$pkg[[:space:]]*install$" >/dev/null
 		  	#If package is installed
 		  then
 		  	tui
@@ -846,7 +861,7 @@ if dpkg -S /bin/ls >/dev/null 2>&1
 	  			#install package
 	  			echo "package dialog is not installed, installing now"
 	  			install_package dialog
-				script_logic
+				tui
 			fi
 	elif rpm -q -f /bin/ls >/dev/null 2>&1
 		#RPM based systems
@@ -860,7 +875,7 @@ if dpkg -S /bin/ls >/dev/null 2>&1
 				#install package
 	  			echo "Installing now"
 	  			install_package dialog
-				script_logic
+				tui
 			fi
 	else
 		  echo "Don't know this package system (neither RPM nor DEB)."
