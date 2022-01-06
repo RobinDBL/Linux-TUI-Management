@@ -221,7 +221,8 @@ function get_sensor_reading(){
 	if dpkg -S /bin/ls >/dev/null 2>&1
 		#Debian based systems
 		then
-		  if dpkg-query -W -f='${Status} ${Version}\n' lm-sensors >/dev/null 2>&1
+		  pkg="lm-sensors"
+		  if dpkg --get-selections | grep -q "^$pkg[[:space:]]*install$" >/dev/null
 		  	#If package is installed
 		  then
 		  	sensors | grep 'Core'
@@ -259,7 +260,8 @@ function file_browser(){
 	if dpkg -S /bin/ls >/dev/null 2>&1
 		#Debian based systems
 		then
-		  if dpkg-query -W -f='${Status} ${Version}\n' mc >/dev/null 2>&1
+		  pkg="mc"
+		  if dpkg --get-selections | grep -q "^$pkg[[:space:]]*install$" >/dev/null
 		  	#If package is installed
 		  then
 		  	mc #execute the file manager
@@ -293,7 +295,8 @@ function network_settings(){
 	if dpkg -S /bin/ls >/dev/null 2>&1
 		#Debian based systems
 		then
-		  if dpkg-query -W -f='${Status} ${Version}\n' network-manager >/dev/null 2>&1
+		  pkg="network-manager"
+		  if dpkg --get-selections | grep -q "^$pkg[[:space:]]*install$" >/dev/null
 		  	#If package is installed
 		  then
 		  	nmtui #execute the file manager
