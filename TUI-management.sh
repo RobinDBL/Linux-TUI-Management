@@ -934,7 +934,7 @@ while true; do
 				echo "Thank you and goodbye"
 				continue
 				clear
-				exit 1
+				exit 0
       ;;
     $DIALOG_ESC)
       clear
