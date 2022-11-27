@@ -1,7 +1,7 @@
 #!/bin/bash
 ###################
 #Author: Robin Deblauwe
-#Repository: gitlab.blueservices.be/RobinDBL/Linux-TUI-Management
+#Repository: github.com/RobinDBL/Linux-TUI-Management
 #Script to check system resources
 #works on both RPM based systems as on DEB based systems
 
@@ -323,6 +323,10 @@ function network_settings(){
 		  echo "Don't know this package system (neither RPM nor DEB)."
 		  exit 1
 	fi
+}
+
+function spawnshell(){
+	/bin/bash -i
 }
 
 ##################################################################################################
@@ -903,7 +907,7 @@ while true; do
     --title "Menu" \
     --clear \
     --cancel-label "Exit" \
-    --menu "Please select:" $HEIGHT $WIDTH 16 \
+    --menu "Please select:" $HEIGHT $WIDTH 17 \
 			"A" "Cpu usage, RAM usage, Disk usage and Network Info"\
 			"1" "Netwerk info"\
 			"2" "Disk usage"\
@@ -920,6 +924,7 @@ while true; do
 			"13" "Network settings"\
 			"14" "Reboot"\
 			"15" "Shut down the system"\
+			"16" "Enter a bash shell"\
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -1051,6 +1056,12 @@ while true; do
 				echo "Shutting down the system in 15 seconds... press <CTRL+C> to cancel..."
 				sleep 15
 				systemctl poweroff
+			;;
+			16)
+				clear
+				echo "Entering a bash shell. Type 'exit' to open this menu."
+				continue
+				spawnshell
 			;;
 		esac
 	done

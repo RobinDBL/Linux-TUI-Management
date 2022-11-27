@@ -29,6 +29,7 @@ Give the script input where needed.
   <li>List only the disk usage</li>
   <li>List only the ram usage</li> 
   <li>List only the CPU usage</li>
+  <li>Open a Tui based file browser</li>
   <li>List the Kernel version</li>
   <li>Execute a script by giving a path to the script</li>
   <li>Service management
@@ -59,10 +60,11 @@ Give the script input where needed.
   <li>Check logged in users</li>
   <li>Reboot the system</li>
   <li>Shut down the system</li>
+  <li>Enter a bash shell</li>
 </ul>
 
 ## Requirements
-For the Tui is the package <code>dialog</code> required. The system will try to install it automatically. If it does not find it, it will use the integrated submenu's.
+For the Tui is the package <code>dialog</code> required. The system will try to install it automatically. If it does not find it, it will use the integrated submenu's. (depreciated)
 The cpu utilization gives the temperature of the individual cores. This requires the package <code>lm-sensors</code> (ubuntu) or <code>lm_sensors</code> (RPM). The system will automatically try to install these required packages.
 
 If the required packages are not found, the system will continue to work, but it will keep trying to install the required packages. If possible, then try to install the packages manually.
